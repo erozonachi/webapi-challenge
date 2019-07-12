@@ -13,6 +13,21 @@ const actionsController = {
       });
     }
   },
+
+  getactions: async (req, res) => {
+    try {
+      if(req.action) {
+        return res.status(200).json(req.action);
+      }
+      const actions = await Actions.get();
+
+      res.status(200).json(actions);
+    } catch(error) {
+      res.status(500).json({
+        error: 'actions could not be fetch at this time'
+      });
+    }
+  },
 }
 
 module.exports = actionsController;
