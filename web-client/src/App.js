@@ -7,10 +7,10 @@ function App() {
   const [ store, setStore ] = useState({ projects: [] });
   const fetchProjects = () => {
     axios.get(BASE_URL)
-    .then(data => {
+    .then(res => {
       setStore({
         ...store, 
-        projects: data
+        projects: res.data
       });
     })
     .catch(error => {
@@ -20,23 +20,18 @@ function App() {
 
   useEffect(() => {
     fetchProjects()
-  }, [ store ]);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h2>Project List</h2>
+      <ul>
+        {
+          store.projects.length > 0?
+            store.projects.map(project => (<li key={project.id}>{project.name}</li>)) :
+            <span>No project found</span>
+        }
+      </ul>
     </div>
   );
 }
