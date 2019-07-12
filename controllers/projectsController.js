@@ -74,6 +74,18 @@ const projectsController = {
       });
     }
   },
+
+  getProjectActions: async (req, res) => {
+    try {
+      const actions = await Projects.getProjectActions(req.project.id);
+
+      res.status(200).json(actions);
+    } catch(error) {
+      res.status(500).json({
+        error: 'actions for the project with specified ID, could not be fetch at this time'
+      });
+    }
+  },
 };
 
 module.exports = projectsController;
