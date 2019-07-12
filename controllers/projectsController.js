@@ -32,6 +32,19 @@ const projectsController = {
       });
     }
   },
+
+  updateProject: async (req, res) => {
+    try {
+      await Projects.update(req.project.id, req.body);
+      const project = await Projects.get(req.project.id);
+
+      res.status(200).json(project);
+    } catch(error) {
+      res.status(500).json({
+        error: 'project could not be modify at this time'
+      });
+    }
+  },
 };
 
 module.exports = projectsController;
