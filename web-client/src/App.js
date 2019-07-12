@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios';
 
@@ -17,6 +17,10 @@ function App() {
       console.log(error);
     });
   }
+
+  useEffect(() => {
+    fetchProjects()
+  }, [ store ]);
   return (
     <div className="App">
       <header className="App-header">
