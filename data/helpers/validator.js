@@ -2,7 +2,7 @@ const Projects = require('./projectModel');
 const Actions = require('./actionModel');
 
 const validator = {
-  ValidateProjectId: async (req, res, next) => {
+  validateProjectId: async (req, res, next) => {
     try {
       const { id } = req.params;
       if(id) {
@@ -25,7 +25,7 @@ const validator = {
     }
   },
 
-  ValidateActionId: async (req, res, next) => {
+  validateActionId: async (req, res, next) => {
     try {
       const { id } = req.params;
       if(id) {
@@ -48,7 +48,7 @@ const validator = {
     }
   },
 
-  ValidateProject: (req, res, next) => {
+  validateProject: (req, res, next) => {
     if(!req.body) {
       return res.status(400).json({
         message: 'missing project data'
@@ -74,7 +74,7 @@ const validator = {
     next();
   },
 
-  ValidateAction: (req, res, next) => {
+  validateAction: (req, res, next) => {
     if(!req.body) {
       return res.status(400).json({
         message: 'missing action data'
