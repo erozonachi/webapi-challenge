@@ -9,6 +9,7 @@ app.post('/:id/actions', validator.validateProjectId, validator.validateAction, 
 
 app.get('/', project.getProjects);
 app.get('/:id', validator.validateProjectId, project.getProjects);
+app.get('/:id/actions', validator.validateProjectId, project.getProjectActions);
 
 app.put('/:id', validator.validateProjectId, validator.validateProject, project.updateProject);
 app.delete('/:id', validator.validateProjectId, project.removeProject);
