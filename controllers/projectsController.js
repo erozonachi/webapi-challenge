@@ -59,6 +59,21 @@ const projectsController = {
       });
     }
   },
+
+  getProjects: async (req, res) => {
+    try {
+      if(req.project) {
+        return res.status(200).json(req.project);
+      }
+      const projects = await Projects.get();
+
+      res.status(200).json(projects);
+    } catch(error) {
+      res.status(500).json({
+        error: 'projects could not be fetch at this time'
+      });
+    }
+  },
 };
 
 module.exports = projectsController;
