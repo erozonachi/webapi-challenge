@@ -1,5 +1,5 @@
-const Projects = require('./projectModel');
-const Actions = require('./actionModel');
+const Projects = require('../data/helpers/projectModel');
+const Actions = require('../data/helpers/actionModel');
 
 const validator = {
   validateProjectId: async (req, res, next) => {
