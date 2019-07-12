@@ -45,6 +45,20 @@ const projectsController = {
       });
     }
   },
+
+  removeProject: async (req, res) => {
+    try {
+      await Projects.remove(req.project.id);
+
+      res.status(200).json({
+        message: 'Successful removal of project'
+      });
+    } catch(error) {
+      res.status(500).json({
+        error: 'project could not be remove at this time'
+      });
+    }
+  },
 };
 
 module.exports = projectsController;
