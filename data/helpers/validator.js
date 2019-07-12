@@ -47,6 +47,32 @@ const validator = {
       });
     }
   },
+
+  ValidateProject: (req, res, next) => {
+    if(!req.body) {
+      return res.status(400).json({
+        message: 'missing project data'
+      });
+    }
+    if(!req.body.name || req.body.name.trim() === '') {
+      return res.status(400).json({
+        message: 'missing required name field'
+      });
+    }
+    if(!req.body.description || req.body.description.trim() === '') {
+      return res.status(400).json({
+        message: 'missing required description field'
+      });
+    }
+    if(req.body.completed) {
+      if(req.body.completed === true || req.body.completed === false) {
+        return res.status(400).json({
+          message: 'completed field can only have a value of boolean type'
+        });
+      }
+    }
+    next();
+  },
 }
 
 module.exports = validator;
