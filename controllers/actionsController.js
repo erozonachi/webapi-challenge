@@ -14,7 +14,7 @@ const actionsController = {
     }
   },
 
-  getactions: async (req, res) => {
+  getActions: async (req, res) => {
     try {
       if(req.action) {
         return res.status(200).json(req.action);
@@ -25,6 +25,20 @@ const actionsController = {
     } catch(error) {
       res.status(500).json({
         error: 'actions could not be fetch at this time'
+      });
+    }
+  },
+
+  removeAction: async (req, res) => {
+    try {
+      await Actions.remove(req.action.id);
+
+      res.status(200).json({
+        message: 'Successful removal of action'
+      });
+    } catch(error) {
+      res.status(500).json({
+        error: 'action could not be remove at this time'
       });
     }
   },
