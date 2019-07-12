@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "Web API Challenge",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/LambdaSchool/Sprint-Challenge-Node-Express.git"
