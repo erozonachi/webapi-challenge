@@ -1,8 +1,8 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [ store, setStore ] = useState({ projects: [] });
   return (
     <div className="App">
       <header className="App-header">
