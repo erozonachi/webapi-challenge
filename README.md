@@ -24,15 +24,26 @@ In this challenge, create a web API around the following resources: `Projects` a
 
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
-- [ ] Mention two parts of Express that you learned about this week.
+- [x] Mention two parts of Express that you learned about this week.
 
-- [ ] Describe Middleware?
+* Express Routing
+* Express Middleware
 
-- [ ] Describe a Resource?
+- [x] Describe Middleware?
 
-- [ ] What can the API return to help clients know if a request was successful?
+Middleware is a small and simple function that handles a specific concern in an application, it plays a major role in modularizing an application. In Express JS context, it could be used to handle request payload validation, authentication/authorization, and logging, etc.
 
-- [ ] How can we partition our application into sub-applications?
+- [x] Describe a Resource?
+
+Resource in the context of Web API development, is a collection of information on which CRUD operation is performed. They are named in plural term and basically form part of their endpoints URL (eg. https://lambdaschool.com/api/v1/students is a URL pointing to students resource on https://lambdaschool.com/api/v1).
+
+- [x] What can the API return to help clients know if a request was successful?
+
+HTTP Status code
+
+- [x] How can we partition our application into sub-applications?
+
+By using express to split our application into different request handlers for every URL and HTTP method combination.
 
 ## Project Setup
 
