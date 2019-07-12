@@ -1,3 +1,24 @@
+const express = require('express');
+const helmet = require('helmet');
+const cors = require('cors');
+
+const server = express();
+const port = process.env.PORT || 5000;
+
+server.use(express.json());
+server.use(cors());
+server.use(helmet());
+
+server.get('/', (req, res) => {
+  res.status(200).json({
+    message: 'Web API Challenge by James Eneh'
+  });
+});
+
+server.listen(port, () => {
+  console.log(`Server running on port: ${port}`);
+})
+
 /*
 play this: https://www.youtube.com/watch?v=d-diB65scQU
 
