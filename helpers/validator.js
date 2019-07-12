@@ -31,7 +31,7 @@ const validator = {
       if(id) {
         const action = await Actions.get(id);
   
-        if(action && action.name) {
+        if(action && action.project_id) {
           req.action = action;
           next();
         } else {
@@ -91,7 +91,7 @@ const validator = {
       });
     }
     if(req.body.completed) {
-      if(req.body.completed === true || req.body.completed === false) {
+      if(req.body.completed === 'true' || req.body.completed === 'false') {
         return res.status(400).json({
           message: 'completed field can only have a value of boolean type'
         });

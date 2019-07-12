@@ -2,6 +2,7 @@ const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
 const projectRoutes = require('./routes/projectRoutes');
+const actionRoutes = require('./routes/actionRoutes');
 
 const server = express();
 const port = process.env.PORT || 5000;
@@ -11,6 +12,7 @@ server.use(cors());
 server.use(helmet());
 
 server.use('/api/projects', projectRoutes);
+server.use('/api/actions', actionRoutes);
 
 server.get('/', (req, res) => {
   res.status(200).json({
