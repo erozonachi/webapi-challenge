@@ -73,6 +73,32 @@ const validator = {
     }
     next();
   },
+
+  ValidateAction: (req, res, next) => {
+    if(!req.body) {
+      return res.status(400).json({
+        message: 'missing action data'
+      });
+    }
+    if(!req.body.notes || req.body.notes.trim() === '') {
+      return res.status(400).json({
+        message: 'missing required notes field'
+      });
+    }
+    if(!req.body.description || req.body.description.trim() === '') {
+      return res.status(400).json({
+        message: 'missing required description field'
+      });
+    }
+    if(req.body.completed) {
+      if(req.body.completed === true || req.body.completed === false) {
+        return res.status(400).json({
+          message: 'completed field can only have a value of boolean type'
+        });
+      }
+    }
+    next();
+  },
 }
 
 module.exports = validator;
