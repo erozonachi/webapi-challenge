@@ -1,8 +1,22 @@
 import React, { useState } from 'react';
 import './App.css';
+import axios from 'axios';
 
 function App() {
+  const BASE_URL = `http://localhost:5000/api/projects`;
   const [ store, setStore ] = useState({ projects: [] });
+  const fetchProjects = () => {
+    axios.get(BASE_URL)
+    .then(data => {
+      setStore({
+        ...store, 
+        projects: data
+      });
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  }
   return (
     <div className="App">
       <header className="App-header">
