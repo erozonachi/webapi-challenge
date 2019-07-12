@@ -18,7 +18,29 @@ const validator = {
         }
         return;
       }
-      next();
+    } catch(error) {
+      res.status(500).json({
+        error: 'Request could not be completed at this time, try again'
+      });
+    }
+  },
+
+  ValidateActionId: async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      if(id) {
+        const action = await Actions.get(id);
+  
+        if(action && action.name) {
+          req.action = action;
+          next();
+        } else {
+          res.status(400).json({
+            message: 'invalid action id'
+          });
+        }
+        return;
+      }
     } catch(error) {
       res.status(500).json({
         error: 'Request could not be completed at this time, try again'
